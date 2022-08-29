@@ -1,0 +1,5 @@
+---
+  - name: Ansible con test
+    hosts: all
+    roles:
+      - test_connection
