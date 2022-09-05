@@ -1,0 +1,15 @@
+- name: nginx and updating
+  apt:
+    name: nginx
+    state: latest
+
+- name: Nginx service
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: Default page change
+  copy:
+    src: index.html
+    dest: /var/www/html/index.html
