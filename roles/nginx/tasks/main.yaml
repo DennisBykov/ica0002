@@ -9,7 +9,8 @@
     state: started
     enabled: yes
 
-- name: Default page change
-  copy:
-    src: index.html
-    dest: /var/www/html/index.html
+- name: replace default the with my copy
+  ansible.builtin.copy:
+    src: default
+    dest: /etc/nginx/sites-enabled/default
+  notify: Restart nginx
