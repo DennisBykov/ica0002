@@ -1,14 +1,15 @@
 ---
-  - name: update cache
+  - name: Init
     become: yes
     roles:
       - init
     hosts: all
 
-  - name: Ansible con test
-    hosts: all
+  - name: Database server
+    become: yes
+    hosts: db_servers
     roles:
-      - test_connection
+      - mysql 
 
   - name: Web Servers
     hosts: web_servers
