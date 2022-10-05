@@ -1,0 +1,31 @@
+acl networks{
+{% for n in acl_lan_networks %}
+{{- n }};
+{% endfor %}};
+
+options {
+        directory "/var/cache/bind";
+        allow-query {
+        {% for n in acl_lan_networks %}
+        {{- n }};
+        {{% endfor %}}};
+
+        forwarders {
+        {% for n in DNS_forwarders %}
+        {{- n }};
+        {% endfor %}};
+
+        dnssec-validation no;
+
+        listen-on-v6 { any; };
+};
+
+zone "denis.ca" {
+    type primary;
+    file "db.denis.j2";
+    allow-transfer {
+        {% for n in acl_lan_networks %}
+        {{- n }};
+        {{% endfor %}}
+    };
+};

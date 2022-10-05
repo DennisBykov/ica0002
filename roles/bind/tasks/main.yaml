@@ -1,0 +1,41 @@
+- name: Install Bind9
+  apt:
+    name: bind9
+    state: latest
+
+- name: Turn off systemd-resolved
+  service: 
+    name: systemd-resolved
+    state: stopped
+    enabled: no
+
+- name: DNS forwarders
+  template:
+    src: named.conf.options.j2
+    dest: /etc/bind/named.conf.options
+  notify: Restart bind
+
+- name: Config master zone
+  template:
+    src: db.denis.j2
+    dest: /var/cache/bind/db.{{ domain_name }}
+  notify: Restart bind
+
+- name: local config
+  template:
+    src: named.conf.local.j2
+    dest: /etc/bind/named.conf.local
+  notify: Restart bind
+
+#rndc reload if needed
+
+- name: Change resolv.conf
+  template:
+    src: resolv.conf.j2
+    dest: /etc/resolv.conf
+
+- name: Bind started
+  service:
+    name: bind9
+    state: started
+    enabled: yes

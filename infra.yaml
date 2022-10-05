@@ -19,4 +19,14 @@
       - uwsgi
       - nginx
 
-
+  #- name: Collect info
+  #  become: yes
+  #  hosts: all
+  #  roles:
+  #    - setup
+ 
+  - name: DNS servers
+    become: yes
+    hosts: dns_servers
+    roles:
+      - bind
