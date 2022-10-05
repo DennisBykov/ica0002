@@ -29,11 +29,6 @@
 
 #rndc reload if needed
 
-- name: Change resolv.conf
-  template:
-    src: resolv.conf.j2
-    dest: /etc/resolv.conf
-
 - name: Bind started
   service:
     name: bind9
