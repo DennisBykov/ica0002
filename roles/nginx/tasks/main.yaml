@@ -10,7 +10,7 @@
     enabled: yes
 
 - name: replace default the with my copy
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: default
     dest: /etc/nginx/sites-enabled/default
   notify: Restart nginx

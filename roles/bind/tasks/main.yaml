@@ -27,6 +27,10 @@
     dest: /etc/bind/named.conf.local
   notify: Restart bind
 
+- name: Config reverse zone
+  template:
+    src: db.reverse.j2
+    dest: /var/cache/bind/db.reverse
 #rndc reload if needed
 
 - name: Bind started

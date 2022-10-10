@@ -1,0 +1,22 @@
+- name: Install prometheus
+  apt:
+    name: prometheus
+    state: latest
+
+- name: Prometheus is running
+  service:
+    name: prometheus
+    state: started
+    enabled: yes
+
+- name: change default prometheus conf
+  template:
+    src: prometheus
+    dest: /etc/default/prometheus
+  notify: Restart prometheus
+
+- name: change prometheus yml
+  template:
+    src: prometheus.yml
+    dest: /etc/prometheus/prometheus.yml
+  notify: Restart prometheus

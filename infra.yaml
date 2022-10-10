@@ -3,7 +3,21 @@
     become: yes
     roles:
       - init
+      - node_exporter
     hosts: all
+
+  - name: Nginx
+    become: yes
+    roles:
+      - nginx
+    hosts: all
+  
+  - name: Install prometheus
+    become: yes
+    hosts: prometheus
+    roles:
+      - prometheus
+    
 
   - name: Database server
     become: yes
@@ -17,7 +31,6 @@
     roles:
       - agama
       - uwsgi
-      - nginx
 
   - name: DNS servers
     become: yes
