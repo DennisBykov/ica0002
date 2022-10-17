@@ -11,12 +11,12 @@
 
 - name: change default prometheus conf
   template:
-    src: prometheus
+    src: prometheus.j2
     dest: /etc/default/prometheus
   notify: Restart prometheus
 
 - name: change prometheus yml
   template:
-    src: prometheus.yml
+    src: prometheus.yml.j2
     dest: /etc/prometheus/prometheus.yml
   notify: Restart prometheus

@@ -17,6 +17,7 @@
     hosts: prometheus
     roles:
       - prometheus
+    tags: prom
     
 
   - name: Database server
