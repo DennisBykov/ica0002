@@ -23,7 +23,7 @@
 
 - name: grafana directory
   ansible.builtin.file:
-    path: /opt/grafana/provisioning/{{ item }}
+    path: /etc/grafana/provisioning/{{ item }}
     state: directory
     recurse: yes
   loop:
@@ -33,25 +33,27 @@
 - name: add grafana.ini
   ansible.builtin.template:
     src: grafana.ini.j2
-    dest: /opt/grafana/grafana.ini
-  no_log: true
+    dest: /etc/grafana/grafana.ini
+  notify: Restart grafana
 
-#- name: add dashboards
-#  ansible.builtin.copy:
-#    src: "{{ item }}"
-#    dest: /opt/grafana/provisioning/dashboards/{{ item }}
-#  loop:
-#    - main.json
+- name: add dashboards
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: /etc/grafana/provisioning/dashboards/{{ item }}
+  loop:
+    - main.json
 #    - mysql.json
 #    - syslog.json
-#  no_log: true
+  notify: Restart grafana
 
 - name: adding dashboards.yaml
   ansible.builtin.template:
     src: dashboards.yaml.j2
-    dest: /opt/grafana/provisioning/dashboards/default.yaml
+    dest: /etc/grafana/provisioning/dashboards/default.yaml
+  notify: Restart grafana
 
-- name: adding datasourcesyaml
+- name: adding datasources.yaml
   ansible.builtin.template: 
     src: datasources.yaml.j2
-    dest: /opt/grafana/provisioning/datasources/default.yaml
+    dest: /etc/grafana/provisioning/datasources/default.yaml
+  notify: Restart grafana

@@ -4,8 +4,8 @@ datasources:
     type: prometheus
     access: proxy
     orgId: 1
-    {% for vm in groups['prometheus'] %}
+{% for vm in groups['prometheus'] %}
     url: http://{{vm}}:9090/prometheus
-    {% endfor %}
+{% endfor %}
     isDefault: true
     editable: false
