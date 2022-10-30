@@ -4,6 +4,7 @@
     roles:
       - init
       - node_exporter
+      - rsyslog
     hosts: all
 
   - name: DNS servers
@@ -67,3 +68,12 @@
     roles:
       - bind_exporter
     tags: bind_exp
+
+  - name: Influxdb and telegraf
+    become: yes
+    hosts: influxdb
+    roles:
+      - influxdb
+      - pinger
+      - influxdb_exporter
+    tags: influx

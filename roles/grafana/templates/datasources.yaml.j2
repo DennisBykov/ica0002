@@ -9,3 +9,33 @@ datasources:
 {% endfor %}
     isDefault: true
     editable: false
+  
+  - name: InfluxDB-telegraf
+    type: influxdb
+    access: proxy
+    orgId: 1
+{% for vm in groups['influxdb'] %}
+    url: http://{{vm}}:8086
+{% endfor %}
+    database: telegraf
+    version: 1
+    editable: false
+
+  - name: InfluxDB-latency
+    type: influxdb
+    access: proxy
+    orgId: 1
+{% for vm in groups['influxdb'] %}
+    url: http://{{vm}}:8086
+{% endfor %}
+    database: latency
+    version: 1
+    editable: false
+
+  - name: InfluxDB-Telegraf
+    type: influxdb
+    access: proxy
+    database: telegraf
+    url: http://{{influxdb_host}}:8086
+    jsonData:
+      httpMode: POST

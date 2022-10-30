@@ -43,7 +43,7 @@
   loop:
     - main.json
 #    - mysql.json
-#    - syslog.json
+    - syslog.json
   notify: Restart grafana
 
 - name: adding dashboards.yaml
