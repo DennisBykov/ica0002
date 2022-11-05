@@ -5,6 +5,7 @@
       - init
       - node_exporter
       - rsyslog
+      - backup
     hosts: all
 
   - name: DNS servers
