@@ -4,4 +4,4 @@
 
 - name: ca cert
   apt:
-    name: ca-certificates>=2021*
+    name: ca-certificates>=20211000*

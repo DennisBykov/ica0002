@@ -27,6 +27,7 @@
     roles:
       - mysql
       - mysql_exporter
+      - mysql_backup
     tags: mysql
 
   - name: Web server
@@ -77,4 +78,5 @@
       - influxdb
       - pinger
       - influxdb_exporter
+      - influxdb_backup
     tags: influx

@@ -1,0 +1,12 @@
+- name: Create a directory
+  file:
+    path: /home/backup/influxdb
+    state: directory
+    mode: "0700"
+    owner: backup
+    group: backup
+
+- name: create a file influxdb-backup
+  template:
+    src: influxdb-backup.j2
+    dest: /etc/cron.d/influxdb-backup
