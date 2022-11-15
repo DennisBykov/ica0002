@@ -25,3 +25,10 @@
     name: prometheus-mysqld-exporter
     state: started
     enabled: yes
+
+- name: MySQL replication metrics
+  template:
+    src: prometheus-mysqld-exporter.j2
+    dest: /etc/default/prometheus-mysqld-exporter
+  notify:
+    - Restart mysql_exporter
