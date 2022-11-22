@@ -1,4 +1,4 @@
-mysql_host: DennisBykov-2
+mysql_host: DennisBykov-1
 mysql_database: agama
 mysql_user: agama
 mysql_password: !vault |
@@ -56,3 +56,9 @@ backup_password: !vault |
 backup_server_ssh_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
 
 github_username: DennisBykov
+
+replication_user: replication
+
+mysql_backup_host: "{{ groups['db_servers'] | reject('eq', mysql_host) | first | default(mysql_host) }}"
+
+node_id: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'].split('.')[-1] }}"

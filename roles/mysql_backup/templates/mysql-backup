@@ -1,0 +1,6 @@
+{% if inventory_hostname != mysql_host -%}
+46 17 * * * backup  rm -rf /home/backup/mysql/*; mysqldump agama > /home/backup/mysql/agama.sql
+46 17 * * *  root  chown backup /home/backup/mysql/agama.sql
+46 17 * * *  backup  duplicity --no-encryption full /home/backup/mysql rsync://DennisBykov@backup.denis.ca//home/DennisBykov/mysql
+46 17 * * *  backup  duplicity --no-encryption incremental /home/backup/mysql rsync://DennisBykov@backup.denis.ca//home/DennisBykov/mysql
+{% endif -%}

@@ -1,3 +1,0 @@
-0 10,22 * * *  backup  mysqldump agama > /home/backup/mysql/agama.sql
-10 22 * * 0  backup  duplicity --no-encryption full /home/backup/mysql/ rsync://DennisBykov@backup.denis.ca//home/DennisBykov/mysql/
-10 22 * * 1-6  backup  duplicity --no-encryption incremental /home/backup/mysql/ rsync://DennisBykov@backup.denis.ca//home/DennisBykov/mysql/
