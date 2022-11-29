@@ -1,4 +1,4 @@
-mysql_host: DennisBykov-1
+mysql_host: DennisBykov-2
 mysql_database: agama
 mysql_user: agama
 mysql_password: !vault |
@@ -62,3 +62,7 @@ replication_user: replication
 mysql_backup_host: "{{ groups['db_servers'] | reject('eq', mysql_host) | first | default(mysql_host) }}"
 
 node_id: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'].split('.')[-1] }}"
+
+docker_user: dennisbykov
+
+agama_port: 8000
