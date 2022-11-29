@@ -50,20 +50,21 @@
       - prometheus
     tags: prom
 
+  - name: Web Servers
+    hosts: web_servers
+    become: yes
+    roles:
+      - agama
+      - docker
+  #    - uwsgi
+    tags: mx
+
   - name: Grafana
     hosts: grafana
     become: yes
     roles:
       - grafana
     tags: grafana
-
-  - name: Web Servers
-    hosts: web_servers
-    become: yes
-    roles:
-      - agama
-      - uwsgi
-    tags: mx
 
   - name: Bind exporter
     become: yes

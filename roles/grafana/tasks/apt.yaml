@@ -1,0 +1,59 @@
+- name: adding an apt key
+  ansible.builtin.apt_key:
+    url: https://packages.grafana.com/gpg.key
+
+- name: add a repository into source list
+  ansible.builtin.apt_repository:
+    repo: deb https://packages.grafana.com/oss/deb stable main
+
+- name: install grafana
+  ansible.builtin.apt:
+    name: grafana
+
+- name: start grafana on boot
+  ansible.builtin.service:
+    name: grafana-server
+    state: started
+    enabled: yes
+  
+- name: create a dictionary
+  file:
+    path: /var/lib/grafana/dashboards
+    state: directory
+
+- name: grafana directory
+  ansible.builtin.file:
+    path: /etc/grafana/provisioning/{{ item }}
+    state: directory
+    recurse: yes
+  loop:
+    - dashboards/main
+    - datasources
+
+- name: add grafana.ini
+  ansible.builtin.template:
+    src: grafana.ini.j2
+    dest: /etc/grafana/grafana.ini
+  notify: Restart grafana
+
+- name: add dashboards
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: /etc/grafana/provisioning/dashboards/{{ item }}
+  loop:
+    - main.json
+    - mysql.json
+    - syslog.json
+  notify: Restart grafana
+
+- name: adding dashboards.yaml
+  ansible.builtin.template:
+    src: dashboards.yaml.j2
+    dest: /etc/grafana/provisioning/dashboards/default.yaml
+  notify: Restart grafana
+
+- name: adding datasources.yaml
+  ansible.builtin.template: 
+    src: datasources.yaml.j2
+    dest: /etc/grafana/provisioning/datasources/default.yaml
+  notify: Restart grafana

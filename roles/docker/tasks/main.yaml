@@ -1,0 +1,17 @@
+- name: Install docker container
+  apt:
+    name:
+      - docker.io
+      - python3-docker
+    state: present
+  
+- name: Log into dockerhub
+  community.docker.docker_login:
+    username: "{{ docker_user }}"
+    password: "{{ grafana_pass }}"
+
+- name: Docker started
+  service:
+    name: docker
+    state: started
+    enabled: yes
