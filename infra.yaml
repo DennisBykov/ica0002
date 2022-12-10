@@ -28,7 +28,6 @@
       - mysql
       - mysql_exporter
       - mysql_backup
-    tags: mx
 
   - name: Web server
     become: yes
@@ -54,9 +53,8 @@
     hosts: web_servers
     become: yes
     roles:
-      - agama
       - docker
-  #    - uwsgi
+      - agama
     tags: mx
 
   - name: Grafana
@@ -82,3 +80,19 @@
       - influxdb_exporter
       - influxdb_backup
     tags: influx
+
+  - name: keepalived
+    hosts: keepalived
+    become: yes
+    gather_facts: yes
+    roles:
+      - keepalived
+    tags: ka
+
+  - name: haproxy
+    hosts: haproxy
+    become: yes
+    gather_facts: yes
+    roles:
+      - haproxy
+    tags: ha

@@ -2,17 +2,17 @@
 #  apt:
 #    name: iptables-persistent 
 
-- name: install agama
-  get_url:
-    url: https://raw.githubusercontent.com/hudolejev/agama/master/agama.py
-    dest: /opt/agama/agama.py
-    mode: 0644
-
 - name: Agama directory
   ansible.builtin.file:
     path: /opt/agama
     state: directory
     recurse: yes
+
+- name: install agama
+  get_url:
+    url: https://raw.githubusercontent.com/hudolejev/agama/master/agama.py
+    dest: /opt/agama/agama.py
+    mode: 0644
 
 - name: Download agama application
   ansible.builtin.get_url:
@@ -50,9 +50,12 @@
 - name: Install agama docker container
   community.docker.docker_container:
     container_default_behavior: no_defaults
-    name: agama
+    name: agama-{{item}}
     image: agama
-    published_ports: "{{ agama_port | int }}:8000"
+    published_ports: "{{ agama_port + item | int }}:8000"
     restart_policy: always
     env:
         AGAMA_DATABASE_URI: mysql+pymysql://{{mysql_user}}:{{mysql_password}}@{{mysql_host}}/{{mysql_database}}
+  loop:
+    - 1
+    - 2 
