@@ -1,5 +1,5 @@
-DennisBykov-1 ansible_host=193.40.156.67 ansible_port=12722 ansible_ssh_user=ubuntu
-DennisBykov-2 ansible_host=193.40.156.67 ansible_port=4722 ansible_ssh_user=ubuntu
+DennisBykov-1 ansible_host=193.40.156.67 ansible_port=12022 ansible_ssh_user=ubuntu
+DennisBykov-2 ansible_host=193.40.156.67 ansible_port=12122 ansible_ssh_user=ubuntu
 
 [db_servers]
 DennisBykov-2
@@ -10,8 +10,15 @@ DennisBykov-1
 DennisBykov-1
 DennisBykov-2
 
-[dns_servers]
+[dns_master]
 DennisBykov-2
+
+[dns_slaves]
+DennisBykov-1
+
+[dns_servers:children]
+dns_master
+dns_slaves
 
 [prometheus]
 DennisBykov-2
