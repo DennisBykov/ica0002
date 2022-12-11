@@ -3,7 +3,10 @@
       "list": [
         {
           "builtIn": 1,
-          "datasource": "-- Grafana --",
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
           "enable": true,
           "hide": true,
           "iconColor": "rgba(0, 211, 255, 1)",
@@ -25,6 +28,10 @@
     "liveNow": false,
     "panels": [
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -85,7 +92,7 @@
           "text": {},
           "textMode": "value_and_name"
         },
-        "pluginVersion": "8.3.3",
+        "pluginVersion": "9.3.1",
         "targets": [
           {
             "datasource": {
@@ -164,6 +171,10 @@
         "type": "stat"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -223,7 +234,7 @@
           },
           "textMode": "auto"
         },
-        "pluginVersion": "8.3.3",
+        "pluginVersion": "9.3.1",
         "targets": [
           {
             "datasource": {
@@ -241,6 +252,10 @@
         "type": "stat"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -300,7 +315,7 @@
           },
           "textMode": "auto"
         },
-        "pluginVersion": "8.3.3",
+        "pluginVersion": "9.3.1",
         "targets": [
           {
             "datasource": {
@@ -318,12 +333,18 @@
         "type": "stat"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
               "mode": "palette-classic"
             },
             "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
               "axisLabel": "",
               "axisPlacement": "auto",
               "barAlignment": 0,
@@ -388,10 +409,12 @@
           "legend": {
             "calcs": [],
             "displayMode": "list",
-            "placement": "bottom"
+            "placement": "bottom",
+            "showLegend": true
           },
           "tooltip": {
-            "mode": "single"
+            "mode": "single",
+            "sort": "none"
           }
         },
         "targets": [
@@ -411,6 +434,10 @@
         "type": "timeseries"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -466,7 +493,7 @@
           },
           "textMode": "value"
         },
-        "pluginVersion": "8.3.3",
+        "pluginVersion": "9.3.1",
         "targets": [
           {
             "datasource": {
@@ -485,6 +512,10 @@
         "type": "stat"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -540,7 +571,7 @@
           },
           "textMode": "value"
         },
-        "pluginVersion": "8.3.3",
+        "pluginVersion": "9.3.1",
         "targets": [
           {
             "datasource": {
@@ -559,12 +590,18 @@
         "type": "stat"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
               "mode": "palette-classic"
             },
             "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
               "axisLabel": "",
               "axisPlacement": "auto",
               "barAlignment": 0,
@@ -629,10 +666,12 @@
           "legend": {
             "calcs": [],
             "displayMode": "list",
-            "placement": "bottom"
+            "placement": "bottom",
+            "showLegend": true
           },
           "tooltip": {
-            "mode": "single"
+            "mode": "single",
+            "sort": "none"
           }
         },
         "targets": [
@@ -652,12 +691,18 @@
         "type": "timeseries"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
               "mode": "palette-classic"
             },
             "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
               "axisLabel": "",
               "axisPlacement": "auto",
               "barAlignment": 0,
@@ -713,10 +758,12 @@
           "legend": {
             "calcs": [],
             "displayMode": "list",
-            "placement": "bottom"
+            "placement": "bottom",
+            "showLegend": true
           },
           "tooltip": {
-            "mode": "single"
+            "mode": "single",
+            "sort": "none"
           }
         },
         "targets": [
@@ -738,8 +785,8 @@
       },
       {
         "datasource": {
-          "type": "influxdb",
-          "uid": "P29B7D75015DE2922"
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
         },
         "fieldConfig": {
           "defaults": {
@@ -747,6 +794,8 @@
               "mode": "palette-classic"
             },
             "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
               "axisLabel": "",
               "axisPlacement": "auto",
               "barAlignment": 0,
@@ -797,76 +846,48 @@
           "x": 12,
           "y": 18
         },
-        "id": 22,
+        "id": 25,
         "options": {
           "legend": {
             "calcs": [],
             "displayMode": "list",
-            "placement": "bottom"
+            "placement": "bottom",
+            "showLegend": true
           },
           "tooltip": {
-            "mode": "single"
+            "mode": "single",
+            "sort": "none"
           }
         },
         "targets": [
           {
-            "alias": "$tag_dst",
             "datasource": {
-              "type": "influxdb",
-              "uid": "P29B7D75015DE2922"
+              "type": "prometheus",
+              "uid": "PBFA97CFB590B2093"
             },
-            "groupBy": [
-              {
-                "params": [
-                  "$__interval"
-                ],
-                "type": "time"
-              },
-              {
-                "params": [
-                  "dst"
-                ],
-                "type": "tag"
-              },
-              {
-                "params": [
-                  "null"
-                ],
-                "type": "fill"
-              }
-            ],
-            "measurement": "latency",
-            "orderByTime": "ASC",
-            "policy": "default",
-            "refId": "A",
-            "resultFormat": "time_series",
-            "select": [
-              [
-                {
-                  "params": [
-                    "rtt"
-                  ],
-                  "type": "field"
-                },
-                {
-                  "params": [],
-                  "type": "mean"
-                }
-              ]
-            ],
-            "tags": []
+            "exemplar": true,
+            "expr": "rate(influxdb_write_write_ok[1m])",
+            "interval": "",
+            "legendFormat": "{{instance}}",
+            "refId": "A"
           }
         ],
-        "title": "Latency",
+        "title": "Influx write rate",
         "type": "timeseries"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
               "mode": "palette-classic"
             },
             "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
               "axisLabel": "",
               "axisPlacement": "auto",
               "barAlignment": 0,
@@ -922,10 +943,12 @@
           "legend": {
             "calcs": [],
             "displayMode": "list",
-            "placement": "bottom"
+            "placement": "bottom",
+            "showLegend": true
           },
           "tooltip": {
-            "mode": "single"
+            "mode": "single",
+            "sort": "none"
           }
         },
         "targets": [
@@ -945,12 +968,18 @@
         "type": "timeseries"
       },
       {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
         "fieldConfig": {
           "defaults": {
             "color": {
               "mode": "palette-classic"
             },
             "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
               "axisLabel": "",
               "axisPlacement": "auto",
               "barAlignment": 0,
@@ -1006,10 +1035,12 @@
           "legend": {
             "calcs": [],
             "displayMode": "list",
-            "placement": "bottom"
+            "placement": "bottom",
+            "showLegend": true
           },
           "tooltip": {
-            "mode": "single"
+            "mode": "single",
+            "sort": "none"
           }
         },
         "targets": [
@@ -1027,94 +1058,10 @@
         ],
         "title": "VM amonut of requests per minute",
         "type": "timeseries"
-      },
-      {
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "linear",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 12,
-          "x": 12,
-          "y": 26
-        },
-        "id": 25,
-        "options": {
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom"
-          },
-          "tooltip": {
-            "mode": "single"
-          }
-        },
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PBFA97CFB590B2093"
-            },
-            "exemplar": true,
-            "expr": "rate(influxdb_write_write_ok[1m])",
-            "interval": "",
-            "legendFormat": "{{instance}}",
-            "refId": "A"
-          }
-        ],
-        "title": "Influx write rate",
-        "type": "timeseries"
       }
     ],
     "refresh": "5s",
-    "schemaVersion": 34,
+    "schemaVersion": 37,
     "style": "dark",
     "tags": [],
     "templating": {

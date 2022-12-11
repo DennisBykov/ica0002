@@ -1,9 +1,10 @@
-DennisBykov-1 ansible_host=193.40.156.67 ansible_port=12022 ansible_ssh_user=ubuntu
-DennisBykov-2 ansible_host=193.40.156.67 ansible_port=12122 ansible_ssh_user=ubuntu
+DennisBykov-1 ansible_host=193.40.156.67 ansible_port=15922 ansible_ssh_user=ubuntu
+DennisBykov-2 ansible_host=193.40.156.67 ansible_port=1922 ansible_ssh_user=ubuntu
+DennisBykov-3 ansible_host=193.40.156.67 ansible_port=15722 ansible_ssh_user=ubuntu
 
 [db_servers]
-DennisBykov-2
 DennisBykov-1
+DennisBykov-2
 
 #agama
 [web_servers]
@@ -11,23 +12,24 @@ DennisBykov-1
 DennisBykov-2
 
 [dns_master]
-DennisBykov-2
+DennisBykov-3
 
 [dns_slaves]
 DennisBykov-1
+DennisBykov-2
 
 [dns_servers:children]
 dns_master
 dns_slaves
 
 [prometheus]
-DennisBykov-2
+DennisBykov-3
 
 [grafana]
-DennisBykov-1
+DennisBykov-3
 
 [influxdb]
-DennisBykov-1
+DennisBykov-3
 
 [keepalived]
 DennisBykov-1

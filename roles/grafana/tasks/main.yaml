@@ -21,6 +21,7 @@
     src: grafana.ini.j2
     dest: /opt/grafana/grafana.ini
   notify: Restart Grafana container
+  no_log: true
 
 - name: add dashboards
   ansible.builtin.copy:
@@ -31,6 +32,7 @@
     - mysql.json
     - syslog.json
   notify: Restart Grafana container
+  no_log: true
 
 - name: adding dashboards.yaml
   ansible.builtin.template:

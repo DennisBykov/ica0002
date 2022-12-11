@@ -15,8 +15,8 @@
     dest: /etc/nginx/sites-enabled/default
   notify: Restart nginx
 
-- name: replace exporter
-  ansible.builtin.template:
-    src: exporter
-    dest: /etc/nginx/sites-enabled/exporter
-  notify: Restart nginx
+#- name: replace exporter
+#  ansible.builtin.template:
+#    src: exporter
+#    dest: /etc/nginx/sites-enabled/exporter
+#  notify: Restart nginx

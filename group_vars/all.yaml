@@ -1,4 +1,4 @@
-mysql_host: DennisBykov-1
+mysql_host: DennisBykov-2
 mysql_database: agama
 mysql_user: agama
 mysql_password: !vault |
