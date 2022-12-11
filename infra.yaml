@@ -32,10 +32,19 @@
       - mysql_exporter
       - mysql_backup
 
-  - name: Web server
+  - name: Web Servers(docker+agama)
+    hosts: web_servers
+    become: yes
+    roles:
+      - docker
+      - agama
+    tags: mx
+
+  - name: Web server(nginx)
     become: yes
     roles:
       - nginx
+      - docker
     hosts: all
   
   - name: Nginx exporter
@@ -52,19 +61,12 @@
       - prometheus
     tags: prom
 
-  - name: Web Servers
-    hosts: web_servers
-    become: yes
-    roles:
-      - docker
-      - agama
-    tags: mx
-
-  - name: Grafana
+  - name: Grafana and Docker
     hosts: grafana
     become: yes
     roles:
       - grafana
+      - docker
     tags: grafana
 
   - name: Influxdb and telegraf
