@@ -3,7 +3,7 @@ SLA for Backup of the services
 This document covers topics regarding the backup and all corresponding procedures of the infrastructure. 
 Some aspects are a subject to change as infrastructure may be updated in the future. 
 
-
+--------------------
 Backup coverage
 -  Database servers (MySQL and InfluxDB) 
 -  Ansible repository (on PC which deploys infrastructure)
@@ -15,7 +15,7 @@ MySQL databases contain AGAMA user generated data. User generated data cannot be
 InfluxDB provides logging for the infrastructure. Logs are very significant in case of resolving errors and investigating possible causes. 
 
 
-
+--------------------
 Backup RPO (Recovery Point Objective)
 
 MySQL – 7 days (1 week)
