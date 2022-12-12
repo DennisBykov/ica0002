@@ -31,6 +31,7 @@
       - mysql
       - mysql_exporter
       - mysql_backup
+    tags: mysql
 
   - name: Web Servers(docker+agama)
     hosts: web_servers
