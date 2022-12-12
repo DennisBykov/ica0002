@@ -2,7 +2,7 @@
   file:
     path: /home/backup/influxdb
     state: directory
-    mode: "0700"
+    mode: "0744"
     owner: backup
     group: backup
 
@@ -10,3 +10,4 @@
   template:
     src: influxdb-backup.j2
     dest: /etc/cron.d/influxdb-backup
+    mode: "0744"

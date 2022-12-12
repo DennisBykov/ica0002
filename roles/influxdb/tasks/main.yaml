@@ -28,10 +28,12 @@
   template:
     src: telegraf.conf
     dest: /etc/telegraf/telegraf.conf
+    mode: '0744'
   notify: Restart telegraf
 
 - name: copy influxdb.conf
   template:
     src: influxdb.conf
     dest: /etc/influxdb/influxdb.conf
+    mode: '0744'
   notify: Restart influxdb
