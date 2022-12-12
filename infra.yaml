@@ -52,7 +52,7 @@
     roles:
       - nginx_exporter
     hosts: all
-    tags: temp
+    tags: nx
 
   - name: Install prometheus
     become: yes
