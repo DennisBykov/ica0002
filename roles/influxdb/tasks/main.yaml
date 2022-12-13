@@ -12,6 +12,18 @@
       - influxdb
       - telegraf
 
+- name: copy telegraf config
+  template:
+    src: telegraf.conf
+    dest: /etc/telegraf/telegraf.conf
+  notify: Restart telegraf
+
+- name: copy influxdb.conf
+  template:
+    src: influxdb.conf
+    dest: /etc/influxdb/influxdb.conf
+  notify: Restart influxdb
+
 - name: start influx
   service:
     name: influxdb
@@ -23,17 +35,3 @@
     name: telegraf
     state: started
     enabled: yes
-
-- name: copy telegraf config
-  template:
-    src: telegraf.conf
-    dest: /etc/telegraf/telegraf.conf
-    mode: '0744'
-  notify: Restart telegraf
-
-- name: copy influxdb.conf
-  template:
-    src: influxdb.conf
-    dest: /etc/influxdb/influxdb.conf
-    mode: '0744'
-  notify: Restart influxdb
