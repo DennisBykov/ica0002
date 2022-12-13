@@ -46,9 +46,9 @@ InfluxDB backups:
 
 Latest data dump is created at 22:15 (UTC) or 0:15 (EET)
 
-Incremental – Mon-Sat at 22:30 (UTC) or 0:30 (EET)
-
 Full – Sunday at 22:30 (UTC) or 0:30 (EET)
+
+Incremental – Mon-Sat at 22:30 (UTC) or 0:30 (EET)
 
 Ansible repository:
 
